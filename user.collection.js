@@ -6,8 +6,8 @@ module.exports = function(waw) {
 		data: {},
 		host: String,
 		thumb: {type: String, default: '/assets/default.png'},
-		email: {type: String, unique: true, sparse: true, trim: true},
-		reg_email: {type: String, unique: true, sparse: true, trim: true},
+		email: String,
+		reg_email: String,
 		password: String,
 		name: String,
 		resetPin: Number

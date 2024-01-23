@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+const path = require('path');
 const nJwt = require('njwt');
 module.exports = function(waw) {
 	/* remove support of waw.file */
@@ -57,19 +58,21 @@ module.exports = function(waw) {
 	const set_is = async (email, is) => {
 		await waw.wait(300);
 
-		const user = await waw.User.findOne({
+		const users = await waw.User.find({
 			email: email
 		});
 
-		if (!user) return;
+		for (const user of users) {
+			if (!user) continue;
 
-		if (!user.is) user.is = {};
+			if (!user.is) user.is = {};
 
-		user.is[is] = true;
+			user.is[is] = true;
 
-		user.markModified('is');
+			user.markModified('is');
 
-		await user.save();
+			await user.save();
+		}
 	}
 
 	if (waw.config.user && waw.config.user.is) {
