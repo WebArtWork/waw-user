@@ -256,7 +256,7 @@ module.exports = function(waw) {
 		},
 		get: {
 			ensure: waw.next,
-			query: () => {
+			query: (req) => {
 				return {
 					host: req.get('host')
 				};
@@ -265,7 +265,7 @@ module.exports = function(waw) {
 		},
 		fetch: [{
 			ensure: waw.next,
-			query: req => {
+			query: (req) => {
 				return {
 					host: req.get('host'),
 					_id: req.body._id
