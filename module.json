@@ -1,0 +1,22 @@
+{
+	"repo": "git@github.com:WebArtWork/waw-user.git",
+	"priority": 800,
+	"name": "User",
+	"crud": {
+		"create": ["admin"],
+		"update": [{
+			"keys": ["name", "data"]
+		}, {
+			"keys": ["name", "data", "is"],
+			"name": "admin"
+		}],
+		"fetch": ["", "me"],
+		"delete": ["admin"]
+	},
+	"dependencies": {
+		"bcrypt-nodejs": "*",
+		"nodemailer": "*",
+		"njwt": "*",
+		"uuid": "*"
+	}
+}
