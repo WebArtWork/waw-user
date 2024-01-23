@@ -147,6 +147,9 @@ module.exports = function(waw) {
 
 	waw.api({
 		router: '/api/user',
+		app: path.join(
+			process.cwd(), 'client', 'dist', 'app'
+		),
 		post: {
 			"/status": async (req, res) => {
 				const user = await findUser(req.body.email, req.get('host'));
