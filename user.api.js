@@ -162,7 +162,6 @@ module.exports = function (waw) {
 
 	waw.setUserPlan = async (transaction) => {
 		const user = await waw.User.findById(transaction.author);
-		console.log(user.plan, user.features);
 		if (transaction.plan) {
 			user.plan = transaction.plan;
 			user.markModified("plan");
@@ -175,7 +174,6 @@ module.exports = function (waw) {
 		user.is = user.is || {};
 		user.is.owner = true;
 		user.markModified("is");
-		console.log(user.plan, user.features);
 		await user.save();
 	};
 
